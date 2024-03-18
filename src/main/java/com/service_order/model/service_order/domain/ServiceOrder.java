@@ -35,8 +35,14 @@ public class ServiceOrder {
     @Column(name = "CUSTOMER_ID", nullable = false)
     private Long customerId;
 
+    @Column(name = "CUSTOMER_TAX_NUM", nullable = false)
+    private String customerTaxNumber;
+
     @Column(name = "VEHICLE_ID", nullable = false)
     private Long vehicleId;
+
+    @Column(name = "VEHICLE_REGISTRATION", nullable = false)
+    private String vehicleRegistrationNumber;
 
     @Column(name = "SERVICE_OPERATION_IS")
     private Long serviceOperationId;

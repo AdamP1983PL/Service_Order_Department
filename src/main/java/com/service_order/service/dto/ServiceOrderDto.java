@@ -17,7 +17,9 @@ public class ServiceOrderDto {
     private LocalDateTime dateTimeUpdated;
     private LocalDateTime dateTimeDeadline;
     private Long customerId;
+    private String customerTaxNumber;
     private Long vehicleId;
+    private String vehicleRegistrationNumber;
     private Long serviceOperationId;
     private OrderStatus orderStatus;
     private Boolean isServiceOrderClosed;

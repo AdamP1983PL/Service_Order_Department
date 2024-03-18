@@ -9,17 +9,17 @@ public interface ServiceOrderService {
 
     List<ServiceOrderDto> findAllServiceOrders();
 
-    ServiceOrderDto findServiceOrderById();
+    ServiceOrderDto findServiceOrderById(Long id);
 
-    List<ServiceOrderDto> findServiceOrderByStatus(OrderStatus orderStatus);
+    List<ServiceOrderDto> findServiceOrdersByStatus(OrderStatus orderStatus);
 
-    List<ServiceOrderDto> findServiceOrderByCustomerId(Long id);
+    List<ServiceOrderDto> findServiceOrdersByCustomerId(Long id);
 
-    List<ServiceOrderDto> findServiceOrderByVehicleId(Long id);
+    List<ServiceOrderDto> findServiceOrdersByVehicleId(Long id);
 
     ServiceOrderDto createServiceOrder(ServiceOrderDto serviceOrderDto);
 
-    ServiceOrderDto updateServiceOrder(ServiceOrderDto serviceOrderDto);
+    ServiceOrderDto updateServiceOrder(ServiceOrderDto serviceOrderDto, Long id);
 
     ServiceOrderDto updateServiceOrderStatus(ServiceOrderDto serviceOrderDto, Long id);
 

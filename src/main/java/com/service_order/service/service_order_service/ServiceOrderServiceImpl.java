@@ -6,7 +6,6 @@ import com.service_order.model.service_order.domain.ServiceOrder;
 import com.service_order.model.service_order.repository.ServiceOrderRepository;
 import com.service_order.service.dto.service_order_dto.ServiceOrderDto;
 import com.service_order.service.mapper.ServiceOrderMapper;
-import com.service_order.service.service_order_service.ServiceOrderService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -33,7 +32,7 @@ public class ServiceOrderServiceImpl implements ServiceOrderService {
 
     @Override
     public ServiceOrderDto findServiceOrderById(Long id) {
-        ServiceOrder serviceOrder =  serviceOrderRepository.findById(id)
+        ServiceOrder serviceOrder = serviceOrderRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Service order", "id: ", Long.toString(id)));
         log.info("====>>>> findServiceOrderById(" + id + ") execution.");
         return serviceOrderMapper.mapToServiceOrderDto(serviceOrder);

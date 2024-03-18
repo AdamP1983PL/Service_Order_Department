@@ -1,11 +1,12 @@
-package com.service_order.service;
+package com.service_order.service.service_order_service;
 
 import com.service_order.exception.ResourceNotFoundException;
 import com.service_order.model.enums.OrderStatus;
 import com.service_order.model.service_order.domain.ServiceOrder;
 import com.service_order.model.service_order.repository.ServiceOrderRepository;
-import com.service_order.service.dto.ServiceOrderDto;
+import com.service_order.service.dto.service_order_dto.ServiceOrderDto;
 import com.service_order.service.mapper.ServiceOrderMapper;
+import com.service_order.service.service_order_service.ServiceOrderService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @AllArgsConstructor
-public class ServiceOrderServiceImpl implements ServiceOrderService{
+public class ServiceOrderServiceImpl implements ServiceOrderService {
 
     private ServiceOrderRepository serviceOrderRepository;
     private ServiceOrderMapper serviceOrderMapper;
@@ -76,8 +77,13 @@ public class ServiceOrderServiceImpl implements ServiceOrderService{
                     order.setDateTimeDeadline(serviceOrderDto.getDateTimeDeadline());
                     order.setCustomerId(serviceOrderDto.getCustomerId());
                     order.setVehicleId(serviceOrderDto.getVehicleId());
-                    order.setServiceOperationId(serviceOrderDto.getServiceOperationId());
                     order.setOrderStatus(serviceOrderDto.getOrderStatus());
+                    order.setDescription1(serviceOrderDto.getDescription1());
+                    order.setDescription2(serviceOrderDto.getDescription2());
+                    order.setDescription3(serviceOrderDto.getDescription3());
+                    order.setDescription4(serviceOrderDto.getDescription4());
+                    order.setDescription5(serviceOrderDto.getDescription5());
+                    order.setDescription6(serviceOrderDto.getDescription6());
                     return serviceOrderRepository.save(order);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("Service order", "id: ", Long.toString(id)));

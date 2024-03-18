@@ -1,6 +1,6 @@
 package com.service_order.controller;
 
-import com.service_order.service.ServiceOrderServiceImpl;
+import com.service_order.service.service_order_service.ServiceOrderServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;

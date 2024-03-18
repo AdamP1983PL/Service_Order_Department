@@ -2,7 +2,7 @@ package com.service_order.service.mapper;
 
 import com.service_order.model.enums.OrderStatus;
 import com.service_order.model.service_order.domain.ServiceOrder;
-import com.service_order.service.dto.ServiceOrderDto;
+import com.service_order.service.dto.service_order_dto.ServiceOrderDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -32,9 +32,11 @@ class ServiceOrderMapperTest {
                 .customerTaxNumber("111222333")
                 .vehicleId(111L)
                 .vehicleRegistrationNumber("111111")
-                .serviceOperationId(1111L)
+//                .serviceOperationId(1111L)
                 .orderStatus(OrderStatus.IN_PROGRESS)
                 .isServiceOrderClosed(false)
+                .description1("test desc 1")
+                .description2("test desc 2")
                 .build();
 
         serviceOrderDto = ServiceOrderDto.builder()
@@ -46,9 +48,11 @@ class ServiceOrderMapperTest {
                 .customerTaxNumber("111222333")
                 .vehicleId(111L)
                 .vehicleRegistrationNumber("111111")
-                .serviceOperationId(1111L)
+//                .serviceOperationId(1111L)
                 .orderStatus(OrderStatus.IN_PROGRESS)
                 .isServiceOrderClosed(false)
+                .description1("test desc 1")
+                .description2("test desc 2")
                 .build();
     }
 
@@ -73,9 +77,11 @@ class ServiceOrderMapperTest {
                 () -> assertEquals("111222333", mappedServiceOrder.getCustomerTaxNumber()),
                 () -> assertEquals(111, mappedServiceOrder.getVehicleId()),
                 () -> assertEquals("111111", mappedServiceOrder.getVehicleRegistrationNumber()),
-                () -> assertEquals(1111, mappedServiceOrder.getServiceOperationId()),
+//                () -> assertEquals(1111, mappedServiceOrder.getServiceOperationId()),
                 () -> assertEquals(OrderStatus.IN_PROGRESS, mappedServiceOrder.getOrderStatus()),
-                () -> assertEquals(false, mappedServiceOrder.getIsServiceOrderClosed())
+                () -> assertEquals(false, mappedServiceOrder.getIsServiceOrderClosed()),
+                () -> assertEquals("test desc 1", mappedServiceOrder.getDescription1()),
+                () -> assertEquals("test desc 2", mappedServiceOrder.getDescription2())
         );
     }
 
@@ -100,9 +106,11 @@ class ServiceOrderMapperTest {
                 () -> assertEquals("111222333", mappedServiceOrderDto.getCustomerTaxNumber()),
                 () -> assertEquals(111, mappedServiceOrderDto.getVehicleId()),
                 () -> assertEquals("111111", mappedServiceOrderDto.getVehicleRegistrationNumber()),
-                () -> assertEquals(1111, mappedServiceOrderDto.getServiceOperationId()),
+//                () -> assertEquals(1111, mappedServiceOrderDto.getServiceOperationId()),
                 () -> assertEquals(OrderStatus.IN_PROGRESS, mappedServiceOrderDto.getOrderStatus()),
-                () -> assertEquals(false, mappedServiceOrderDto.getIsServiceOrderClosed())
+                () -> assertEquals(false, mappedServiceOrderDto.getIsServiceOrderClosed()),
+                () -> assertEquals("test desc 1", mappedServiceOrderDto.getDescription1()),
+                () -> assertEquals("test desc 2", mappedServiceOrderDto.getDescription2())
         );
     }
 

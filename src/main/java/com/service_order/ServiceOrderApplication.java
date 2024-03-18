@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @PropertySource("classpath:database.properties")
-//Registering VehicleDepartment Service as a Eureka Client with the Eureka Server
+//Registering ServiceOrderDepartment Service as a Eureka Client with the Eureka Server
 @EnableEurekaClient
 @EnableFeignClients
 public class ServiceOrderApplication {

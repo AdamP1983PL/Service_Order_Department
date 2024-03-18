@@ -2,7 +2,6 @@ package com.service_order.model.service_order.repository;
 
 import com.service_order.model.enums.OrderStatus;
 import com.service_order.model.service_order.domain.ServiceOrder;
-import com.service_order.service.dto.ServiceOrderDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -44,13 +44,31 @@ public class ServiceOrder {
     @Column(name = "VEHICLE_REGISTRATION", nullable = false)
     private String vehicleRegistrationNumber;
 
-    @Column(name = "SERVICE_OPERATION_IS")
-    private Long serviceOperationId;
+//    @Column(name = "SERVICE_OPERATION_IS")
+//    private Long serviceOperationId;
 
     @Column(name = "ORDER_STATUS", nullable = false)
     private OrderStatus orderStatus;
 
     @Column(name = "IS_CLOSED", nullable = false)
     private Boolean isServiceOrderClosed;
+
+    @Column(name = "DESC_1", nullable = false)
+    private String description1;
+
+    @Column(name = "DESC_2")
+    private String description2;
+
+    @Column(name = "DESC_3")
+    private String description3;
+
+    @Column(name = "DESC_4")
+    private String description4;
+
+    @Column(name = "DESC_5")
+    private String description5;
+
+    @Column(name = "DESC_6")
+    private String description6;
 
 }

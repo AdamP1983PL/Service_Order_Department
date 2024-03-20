@@ -1,8 +1,6 @@
 package com.service_order.service.dto.vehicle_dto;
 
-import lombok.Getter;
 
-@Getter
 public enum GearboxType {
     UNKNOWN("UNKNOWN"),
     MANUAL("MANUAL"),
@@ -14,4 +12,9 @@ public enum GearboxType {
     GearboxType(String displayText) {
         this.displayText = displayText;
     }
+
+    public String getDisplayText() {
+        return displayText;
+    }
+
 }

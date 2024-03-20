@@ -3,8 +3,6 @@ package com.service_order.service.dto.customer_dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
-@AllArgsConstructor
 public enum PaymentMethod {
     CASH("cash"),
     THREE_DAY_TRANSFER("3 day transfer"),
@@ -15,4 +13,11 @@ public enum PaymentMethod {
 
     private final String displayText;
 
+    PaymentMethod(String displayText) {
+        this.displayText = displayText;
+    }
+
+    public String getDisplayText() {
+        return displayText;
+    }
 }

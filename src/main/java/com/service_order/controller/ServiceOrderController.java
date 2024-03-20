@@ -14,10 +14,13 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/service-order")
-@AllArgsConstructor
 public class ServiceOrderController {
 
-    private ServiceOrderServiceImpl serviceOrderServiceImpl;
+    private final ServiceOrderServiceImpl serviceOrderServiceImpl;
+
+    public ServiceOrderController(ServiceOrderServiceImpl serviceOrderServiceImpl) {
+        this.serviceOrderServiceImpl = serviceOrderServiceImpl;
+    }
 
     @GetMapping("/")
     public ResponseEntity<List<ServiceOrderDto>> findAllServiceOrders() {

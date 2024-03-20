@@ -66,21 +66,20 @@ public class ServiceOrderServiceImpl implements ServiceOrderService {
                 .collect(Collectors.toList());
     }
 
-//    @Override
-//    public List<ServiceOrderDto> findServiceOrdersByVehicleId(Long id) {
-//        log.info("====>>>>findServiceOrdersByVehicleId(" + id + ") execution.");
-//        return serviceOrderRepository.findServiceOrderByVehicleId(id).stream()
-//                .map(serviceOrderMapper::mapToServiceOrderDto)
-//                .collect(Collectors.toList());
-//    }
+    @Override
+    public List<ServiceOrderDto> findServiceOrdersByVehicleId(Long id) {
+        log.info("====>>>>findServiceOrdersByVehicleId(" + id + ") execution.");
+        return serviceOrderRepository.findServiceOrderByVehicleId(id).stream()
+                .map(serviceOrderMapper::mapToServiceOrderDto)
+                .collect(Collectors.toList());
+    }
 
     @Override
     public ServiceOrderDto createServiceOrder(ServiceOrderDto serviceOrderDto) {
-//        if (serviceOrderDto != null) {
-//            vehicleApiServiceImpl.findVehicleById(serviceOrderDto.getId());
-        VehicleDto vehicleDto = vehicleApiClient.findVehicleById(serviceOrderDto.getVehicleId());
-//        }
-//        assert serviceOrderDto != null;
+        if (serviceOrderDto != null) {
+            VehicleDto vehicleDto = vehicleApiClient.findVehicleById(serviceOrderDto.getVehicleId());
+        }
+        assert serviceOrderDto != null;
         ServiceOrder mappedServiceOrderEntity = serviceOrderMapper.mapToServiceOrder(serviceOrderDto);
         ServiceOrder savedServiceOrder = serviceOrderRepository.save(mappedServiceOrderEntity);
         log.info("====>>>> createServiceOrder(" + serviceOrderDto + ") execution.");
@@ -93,14 +92,11 @@ public class ServiceOrderServiceImpl implements ServiceOrderService {
                 .map(order -> {
                     order.setDateTimeDeadline(serviceOrderDto.getDateTimeDeadline());
                     order.setCustomerId(serviceOrderDto.getCustomerId());
-//                    order.setVehicleId(serviceOrderDto.getVehicleId());
+                    order.setVehicleId(serviceOrderDto.getVehicleId());
                     order.setOrderStatus(serviceOrderDto.getOrderStatus());
                     order.setDescription1(serviceOrderDto.getDescription1());
                     order.setDescription2(serviceOrderDto.getDescription2());
                     order.setDescription3(serviceOrderDto.getDescription3());
-                    order.setDescription4(serviceOrderDto.getDescription4());
-                    order.setDescription5(serviceOrderDto.getDescription5());
-                    order.setDescription6(serviceOrderDto.getDescription6());
                     return serviceOrderRepository.save(order);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("Service order", "id: ", Long.toString(id)));

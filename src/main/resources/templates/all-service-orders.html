@@ -24,7 +24,6 @@
             <th>Vehicle Id</th>
             <th>Vehicle Registration Number</th>
             <th>Order Status</th>
-            <th>Is Order Closed</th>
             <th>Details</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -41,10 +40,6 @@
             <td th:text="*{vehicleId}"></td>
             <td th:text="*{vehicleRegistrationNumber}"></td>
             <td th:text="*{orderStatus}"></td>
-<!--            <td th:text="*{isServiceOrderClosed}"></td>-->
-            <td>
-
-            </td>
             <td>
                 <a th:href="@{/service-order/details/{id}(id=${serviceOrder.id})}"
                    class="btn btn-primary btn-sm">Details</a>

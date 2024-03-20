@@ -17,22 +17,25 @@ public class ServiceOrderDto {
     private Long vehicleId;
     private String vehicleRegistrationNumber;
     private OrderStatus orderStatus;
-    private Boolean isServiceOrderClosed;
     private String description1;
     private String description2;
     private String description3;
-    private String description4;
-    private String description5;
-    private String description6;
 
     public ServiceOrderDto() {
     }
 
-    public ServiceOrderDto(Long id, LocalDateTime dateTimeCreated, LocalDateTime dateTimeUpdated,
-                           LocalDateTime dateTimeDeadline, Long customerId, String customerName,
-                           Long vehicleId, String vehicleRegistrationNumber, OrderStatus orderStatus,
-                           Boolean isServiceOrderClosed, String description1, String description2,
-                           String description3, String description4, String description5, String description6) {
+    public ServiceOrderDto(Long id,
+                           LocalDateTime dateTimeCreated,
+                           LocalDateTime dateTimeUpdated,
+                           LocalDateTime dateTimeDeadline,
+                           Long customerId,
+                           String customerName,
+                           Long vehicleId,
+                           String vehicleRegistrationNumber,
+                           OrderStatus orderStatus,
+                           String description1,
+                           String description2,
+                           String description3) {
         this.id = id;
         this.dateTimeCreated = dateTimeCreated;
         this.dateTimeUpdated = dateTimeUpdated;
@@ -42,13 +45,9 @@ public class ServiceOrderDto {
         this.vehicleId = vehicleId;
         this.vehicleRegistrationNumber = vehicleRegistrationNumber;
         this.orderStatus = orderStatus;
-        this.isServiceOrderClosed = isServiceOrderClosed;
         this.description1 = description1;
         this.description2 = description2;
         this.description3 = description3;
-        this.description4 = description4;
-        this.description5 = description5;
-        this.description6 = description6;
     }
 
     public Long getId() {
@@ -123,14 +122,6 @@ public class ServiceOrderDto {
         this.orderStatus = orderStatus;
     }
 
-    public Boolean getServiceOrderClosed() {
-        return isServiceOrderClosed;
-    }
-
-    public void setServiceOrderClosed(Boolean serviceOrderClosed) {
-        isServiceOrderClosed = serviceOrderClosed;
-    }
-
     public String getDescription1() {
         return description1;
     }
@@ -155,30 +146,6 @@ public class ServiceOrderDto {
         this.description3 = description3;
     }
 
-    public String getDescription4() {
-        return description4;
-    }
-
-    public void setDescription4(String description4) {
-        this.description4 = description4;
-    }
-
-    public String getDescription5() {
-        return description5;
-    }
-
-    public void setDescription5(String description5) {
-        this.description5 = description5;
-    }
-
-    public String getDescription6() {
-        return description6;
-    }
-
-    public void setDescription6(String description6) {
-        this.description6 = description6;
-    }
-
     @Override
     public String toString() {
         return "ServiceOrderDto{" +
@@ -191,13 +158,9 @@ public class ServiceOrderDto {
                 ", vehicleId=" + vehicleId +
                 ", vehicleRegistrationNumber='" + vehicleRegistrationNumber + '\'' +
                 ", orderStatus=" + orderStatus +
-                ", isServiceOrderClosed=" + isServiceOrderClosed +
                 ", description1='" + description1 + '\'' +
                 ", description2='" + description2 + '\'' +
                 ", description3='" + description3 + '\'' +
-                ", description4='" + description4 + '\'' +
-                ", description5='" + description5 + '\'' +
-                ", description6='" + description6 + '\'' +
                 '}';
     }
 }

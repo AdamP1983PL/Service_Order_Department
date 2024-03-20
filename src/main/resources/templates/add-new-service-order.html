@@ -100,27 +100,6 @@
                     <p th:if="${#fields.hasErrors('description3')}" class="text-danger"
                        th:errors="*{description3}"></p>
                 </div>
-                <div class="form-group mb-3">
-                    <label for="description4" class="form-label">Description 4</label>
-                    <input class="form-control" th:field="*{description4}"
-                           type="text" id="description4" name="description4" placeholder="Optional description">
-                    <p th:if="${#fields.hasErrors('description4')}" class="text-danger"
-                       th:errors="*{description4}"></p>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="description5" class="form-label">Description 5</label>
-                    <input class="form-control" th:field="*{description5}"
-                           type="text" id="description5" name="description5" placeholder="Optional description">
-                    <p th:if="${#fields.hasErrors('description5')}" class="text-danger"
-                       th:errors="*{description5}"></p>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="description6" class="form-label">Description 6</label>
-                    <input class="form-control" th:field="*{description6}"
-                           type="text" id="description6" name="description6" placeholder="Optional description">
-                    <p th:if="${#fields.hasErrors('description6')}" class="text-danger"
-                       th:errors="*{description6}"></p>
-                </div>
                 <div class="mb-3">
                     <button class="btn btn-primary" type="submit">Save Service Order</button>
                 </div>

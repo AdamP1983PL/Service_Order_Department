@@ -15,16 +15,12 @@ public class ServiceOrderMapper {
                 .dateTimeDeadline(serviceOrderDto.getDateTimeDeadline())
                 .customerId(serviceOrderDto.getCustomerId())
                 .customerName(serviceOrderDto.getCustomerName())
-//                .vehicleId(serviceOrderDto.getVehicleId())
+                .vehicleId(serviceOrderDto.getVehicleId())
                 .vehicleRegistrationNumber(serviceOrderDto.getVehicleRegistrationNumber())
                 .orderStatus(serviceOrderDto.getOrderStatus())
-                .isServiceOrderClosed(serviceOrderDto.getServiceOrderClosed())
                 .description1(serviceOrderDto.getDescription1())
                 .description2(serviceOrderDto.getDescription2())
                 .description3(serviceOrderDto.getDescription3())
-                .description4(serviceOrderDto.getDescription4())
-                .description5(serviceOrderDto.getDescription5())
-                .description6(serviceOrderDto.getDescription6())
                 .build();
     }
 
@@ -36,16 +32,12 @@ public class ServiceOrderMapper {
                 .dateTimeDeadline(serviceOrder.getDateTimeDeadline())
                 .customerId(serviceOrder.getCustomerId())
                 .customerName(serviceOrder.getCustomerName())
-//                .vehicleId(serviceOrder.getVehicleId())
+                .vehicleId(serviceOrder.getVehicleId())
                 .vehicleRegistrationNumber(serviceOrder.getVehicleRegistrationNumber())
                 .orderStatus(serviceOrder.getOrderStatus())
-                .isServiceOrderClosed(serviceOrder.getServiceOrderClosed())
                 .description1(serviceOrder.getDescription1())
                 .description2(serviceOrder.getDescription2())
                 .description3(serviceOrder.getDescription3())
-                .description4(serviceOrder.getDescription4())
-                .description5(serviceOrder.getDescription5())
-                .description6(serviceOrder.getDescription6())
                 .build();
     }
 

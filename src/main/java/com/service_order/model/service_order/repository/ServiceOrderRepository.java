@@ -12,7 +12,7 @@ public interface ServiceOrderRepository extends JpaRepository<ServiceOrder, Long
 
     List<ServiceOrder> findServiceOrderByCustomerId(Long id);
 
-//    List<ServiceOrder> findServiceOrderByVehicleId(Long id);
+    List<ServiceOrder> findServiceOrderByVehicleId(Long id);
 
 }
 

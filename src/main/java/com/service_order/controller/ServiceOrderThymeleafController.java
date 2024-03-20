@@ -106,14 +106,6 @@ public class ServiceOrderThymeleafController {
         return "vehicle/vehicle-list";
     }
 
-//    @GetMapping("service-order/find-all_vehicles")
-//    public String showAllCustomers(Model model) {
-//        List<VehicleDto> vehicleDtoList = vehicleApiServiceImpl.findAllVehicles();
-//        model.addAttribute("vehicleDtoList", vehicleDtoList);
-//        log.info("====>>>> showAllVehicles() execution.");
-//        return "vehicle/vehicle-list";
-//    }
-
 }
 
 

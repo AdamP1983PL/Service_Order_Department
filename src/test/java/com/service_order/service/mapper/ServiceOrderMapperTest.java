@@ -33,7 +33,6 @@ class ServiceOrderMapperTest {
                 .vehicleId(111L)
                 .vehicleRegistrationNumber("111111")
                 .orderStatus(OrderStatus.IN_PROGRESS)
-                .isServiceOrderClosed(false)
                 .description1("test desc 1")
                 .description2("test desc 2")
                 .build();
@@ -48,7 +47,6 @@ class ServiceOrderMapperTest {
                 .vehicleId(111L)
                 .vehicleRegistrationNumber("111111")
                 .orderStatus(OrderStatus.IN_PROGRESS)
-                .isServiceOrderClosed(false)
                 .description1("test desc 1")
                 .description2("test desc 2")
                 .build();
@@ -76,7 +74,6 @@ class ServiceOrderMapperTest {
                 () -> assertEquals(111, mappedServiceOrder.getVehicleId()),
                 () -> assertEquals("111111", mappedServiceOrder.getVehicleRegistrationNumber()),
                 () -> assertEquals(OrderStatus.IN_PROGRESS, mappedServiceOrder.getOrderStatus()),
-                () -> assertEquals(false, mappedServiceOrder.getServiceOrderClosed()),
                 () -> assertEquals("test desc 1", mappedServiceOrder.getDescription1()),
                 () -> assertEquals("test desc 2", mappedServiceOrder.getDescription2())
         );
@@ -104,7 +101,6 @@ class ServiceOrderMapperTest {
                 () -> assertEquals(111, mappedServiceOrderDto.getVehicleId()),
                 () -> assertEquals("111111", mappedServiceOrderDto.getVehicleRegistrationNumber()),
                 () -> assertEquals(OrderStatus.IN_PROGRESS, mappedServiceOrderDto.getOrderStatus()),
-                () -> assertEquals(false, mappedServiceOrderDto.getServiceOrderClosed()),
                 () -> assertEquals("test desc 1", mappedServiceOrderDto.getDescription1()),
                 () -> assertEquals("test desc 2", mappedServiceOrderDto.getDescription2())
         );

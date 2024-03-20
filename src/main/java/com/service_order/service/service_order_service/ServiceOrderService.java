@@ -15,7 +15,7 @@ public interface ServiceOrderService {
 
     List<ServiceOrderDto> findServiceOrdersByCustomerId(Long id);
 
-//    List<ServiceOrderDto> findServiceOrdersByVehicleId(Long id);
+    List<ServiceOrderDto> findServiceOrdersByVehicleId(Long id);
 
     ServiceOrderDto createServiceOrder(ServiceOrderDto serviceOrderDto);
 

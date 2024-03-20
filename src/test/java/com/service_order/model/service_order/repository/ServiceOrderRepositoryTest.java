@@ -34,13 +34,9 @@ class ServiceOrderRepositoryTest {
                 .vehicleId(111L)
                 .vehicleRegistrationNumber("112233")
                 .orderStatus(OrderStatus.IN_PROGRESS)
-                .isServiceOrderClosed(false)
                 .description1("test 1")
                 .description2("test 2")
                 .description3("test 3")
-                .description4("test 4")
-                .description5("test 5")
-                .description6("test 6")
                 .build();
 
         serviceOrder2 = ServiceOrder.builder()
@@ -53,13 +49,9 @@ class ServiceOrderRepositoryTest {
                 .vehicleId(222L)
                 .vehicleRegistrationNumber("112233")
                 .orderStatus(OrderStatus.OPEN)
-                .isServiceOrderClosed(false)
                 .description1("test 11")
                 .description2("test 22")
                 .description3("test 33")
-                .description4("test 44")
-                .description5("test 55")
-                .description6("test 66")
                 .build();
 
         serviceOrderRepository.save(serviceOrder1);
@@ -92,9 +84,8 @@ class ServiceOrderRepositoryTest {
         // then
         assertAll(
                 () -> assertNotNull(testList),
-                () -> assertEquals(1, testList.size()),
-                () -> assertEquals(serviceOrder1.getServiceOrderClosed(), testList.get(0).getServiceOrderClosed())
-        );
+                () -> assertEquals(1, testList.size())
+                );
     }
 
     @Test

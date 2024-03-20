@@ -30,10 +30,9 @@ class ServiceOrderRepositoryTest {
                 .dateTimeUpdated(LocalDateTime.of(2024, 3, 17, 13, 0, 0))
                 .dateTimeDeadline(LocalDateTime.of(2024, 3, 24, 9, 0, 0))
                 .customerId(11L)
-                .customerTaxNumber("111222333")
+                .customerName("test name")
                 .vehicleId(111L)
                 .vehicleRegistrationNumber("112233")
-//                .serviceOperationId(1111L)
                 .orderStatus(OrderStatus.IN_PROGRESS)
                 .isServiceOrderClosed(false)
                 .description1("test 1")
@@ -50,10 +49,9 @@ class ServiceOrderRepositoryTest {
                 .dateTimeUpdated(LocalDateTime.of(2025, 6, 19, 13, 0, 0))
                 .dateTimeDeadline(LocalDateTime.of(2025, 6, 20, 14, 0, 0))
                 .customerId(11L)
-                .customerTaxNumber("111222333")
+                .customerName("test name")
                 .vehicleId(222L)
                 .vehicleRegistrationNumber("112233")
-//                .serviceOperationId(2222L)
                 .orderStatus(OrderStatus.OPEN)
                 .isServiceOrderClosed(false)
                 .description1("test 11")
@@ -95,7 +93,7 @@ class ServiceOrderRepositoryTest {
         assertAll(
                 () -> assertNotNull(testList),
                 () -> assertEquals(1, testList.size()),
-                () -> assertEquals(serviceOrder1.getIsServiceOrderClosed(), testList.get(0).getIsServiceOrderClosed())
+                () -> assertEquals(serviceOrder1.getServiceOrderClosed(), testList.get(0).getServiceOrderClosed())
         );
     }
 

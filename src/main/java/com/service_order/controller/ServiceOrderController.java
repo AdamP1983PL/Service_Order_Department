@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.Path;
 import java.util.List;
 
 @Slf4j
@@ -47,13 +48,36 @@ public class ServiceOrderController {
         return new ResponseEntity<>(serviceOrderDtoList, HttpStatus.OK);
     }
 
-    @GetMapping("/vehicle-d/{id}")
-    public ResponseEntity<List<ServiceOrderDto>> findServiceOrderByVehicleId(@PathVariable("id") Long id) {
-        List<ServiceOrderDto> serviceOrderDtoList = serviceOrderServiceImpl.findServiceOrdersByVehicleId(id));
-        log.info("====>>>> findServiceOrderByVehicleId(" + id + ") execution.");
-        return new ResponseEntity<>(serviceOrderDtoList, HttpStatus.OK);
+//    @GetMapping("/vehicle-d/{id}")
+//    public ResponseEntity<List<ServiceOrderDto>> findServiceOrderByVehicleId(@PathVariable("id") Long id) {
+//        List<ServiceOrderDto> serviceOrderDtoList = serviceOrderServiceImpl.findServiceOrdersByVehicleId(id);
+//        log.info("====>>>> findServiceOrderByVehicleId(" + id + ") execution.");
+//        return new ResponseEntity<>(serviceOrderDtoList, HttpStatus.OK);
+//    }
+
+
+
+    @PostMapping("/")
+    public ResponseEntity<ServiceOrderDto> createServiceOrder(@RequestBody ServiceOrderDto serviceOrderDto) {
+        ServiceOrderDto createdServiceOrder = serviceOrderServiceImpl.createServiceOrder(serviceOrderDto);
+        log.info("====>>>> createServiceOrder() execution.");
+        return new ResponseEntity<>(createdServiceOrder, HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ServiceOrderDto> updateServiceOrder(@RequestBody ServiceOrderDto serviceOrderDto,
+                                                              @PathVariable("id") Long id) {
+        ServiceOrderDto updatedServiceOrder = serviceOrderServiceImpl.updateServiceOrder(serviceOrderDto, id);
+        log.info("====>>>> updateServiceOrder(" + id + ") execution");
+        return new ResponseEntity<>(updatedServiceOrder, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ServiceOrderDto> deleteServiceOrderById(@PathVariable("id") Long id) {
+        serviceOrderServiceImpl.deleteServiceOrder(id);
+        log.info("====>>>> deleteServiceOrderById(" + id + ") execution");
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
 
 
 }

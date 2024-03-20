@@ -2,16 +2,18 @@ package com.service_order.service.customer_service;
 
 import com.service_order.client.CustomerApiClient;
 import com.service_order.service.dto.customer_dto.CustomerDto;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class CustomerApiServiceImpl implements CustomerApiService {
 
-    private CustomerApiClient customerApiClient;
+    private final CustomerApiClient customerApiClient;
+
+    public CustomerApiServiceImpl(CustomerApiClient customerApiClient) {
+        this.customerApiClient = customerApiClient;
+    }
 
     @Override
     public List<CustomerDto> findAllCustomers() {

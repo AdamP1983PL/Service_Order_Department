@@ -15,13 +15,15 @@ public interface ServiceOrderService {
 
     List<ServiceOrderDto> findServiceOrdersByCustomerId(Long id);
 
-    List<ServiceOrderDto> findServiceOrdersByVehicleId(Long id);
+//    List<ServiceOrderDto> findServiceOrdersByVehicleId(Long id);
 
     ServiceOrderDto createServiceOrder(ServiceOrderDto serviceOrderDto);
 
     ServiceOrderDto updateServiceOrder(ServiceOrderDto serviceOrderDto, Long id);
 
     ServiceOrderDto updateServiceOrderStatus(ServiceOrderDto serviceOrderDto, Long id);
+
+    ServiceOrderDto mvcUpdateServiceOrder(ServiceOrderDto serviceOrderDto);
 
     void deleteServiceOrder(Long id);
 

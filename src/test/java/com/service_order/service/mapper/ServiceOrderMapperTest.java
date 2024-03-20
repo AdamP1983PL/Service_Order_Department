@@ -29,10 +29,9 @@ class ServiceOrderMapperTest {
                 .dateTimeUpdated(LocalDateTime.of(2024, 3, 17, 13, 0, 0))
                 .dateTimeDeadline(LocalDateTime.of(2024, 3, 24, 9, 0, 0))
                 .customerId(11L)
-                .customerTaxNumber("111222333")
+                .customerName("test name")
                 .vehicleId(111L)
                 .vehicleRegistrationNumber("111111")
-//                .serviceOperationId(1111L)
                 .orderStatus(OrderStatus.IN_PROGRESS)
                 .isServiceOrderClosed(false)
                 .description1("test desc 1")
@@ -45,10 +44,9 @@ class ServiceOrderMapperTest {
                 .dateTimeUpdated(LocalDateTime.of(2024, 3, 17, 13, 0, 0))
                 .dateTimeDeadline(LocalDateTime.of(2024, 3, 24, 9, 0, 0))
                 .customerId(11L)
-                .customerTaxNumber("111222333")
+                .customerName("test name")
                 .vehicleId(111L)
                 .vehicleRegistrationNumber("111111")
-//                .serviceOperationId(1111L)
                 .orderStatus(OrderStatus.IN_PROGRESS)
                 .isServiceOrderClosed(false)
                 .description1("test desc 1")
@@ -74,12 +72,11 @@ class ServiceOrderMapperTest {
                 () -> assertEquals(LocalDateTime.of(2024, 3, 24, 9, 0, 0),
                         mappedServiceOrder.getDateTimeDeadline()),
                 () -> assertEquals(11, mappedServiceOrder.getCustomerId()),
-                () -> assertEquals("111222333", mappedServiceOrder.getCustomerTaxNumber()),
+                () -> assertEquals("test name", mappedServiceOrder.getCustomerName()),
                 () -> assertEquals(111, mappedServiceOrder.getVehicleId()),
                 () -> assertEquals("111111", mappedServiceOrder.getVehicleRegistrationNumber()),
-//                () -> assertEquals(1111, mappedServiceOrder.getServiceOperationId()),
                 () -> assertEquals(OrderStatus.IN_PROGRESS, mappedServiceOrder.getOrderStatus()),
-                () -> assertEquals(false, mappedServiceOrder.getIsServiceOrderClosed()),
+                () -> assertEquals(false, mappedServiceOrder.getServiceOrderClosed()),
                 () -> assertEquals("test desc 1", mappedServiceOrder.getDescription1()),
                 () -> assertEquals("test desc 2", mappedServiceOrder.getDescription2())
         );
@@ -103,12 +100,11 @@ class ServiceOrderMapperTest {
                 () -> assertEquals(LocalDateTime.of(2024, 3, 24, 9, 0, 0),
                         mappedServiceOrderDto.getDateTimeDeadline()),
                 () -> assertEquals(11, mappedServiceOrderDto.getCustomerId()),
-                () -> assertEquals("111222333", mappedServiceOrderDto.getCustomerTaxNumber()),
+                () -> assertEquals("test name", mappedServiceOrderDto.getCustomerName()),
                 () -> assertEquals(111, mappedServiceOrderDto.getVehicleId()),
                 () -> assertEquals("111111", mappedServiceOrderDto.getVehicleRegistrationNumber()),
-//                () -> assertEquals(1111, mappedServiceOrderDto.getServiceOperationId()),
                 () -> assertEquals(OrderStatus.IN_PROGRESS, mappedServiceOrderDto.getOrderStatus()),
-                () -> assertEquals(false, mappedServiceOrderDto.getIsServiceOrderClosed()),
+                () -> assertEquals(false, mappedServiceOrderDto.getServiceOrderClosed()),
                 () -> assertEquals("test desc 1", mappedServiceOrderDto.getDescription1()),
                 () -> assertEquals("test desc 2", mappedServiceOrderDto.getDescription2())
         );

@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "${vehicle-department.application.name}")
+@FeignClient(name = "VEHICLE-DEPARTMENT")
 public interface VehicleApiClient {
 
     @GetMapping("/api/vehicle/")
     List<VehicleDto> findAllVehicles();
+
+    @GetMapping("/api/vehicle/id/{id}")
+    VehicleDto findVehicleById(@PathVariable("id") Long id);
 
     @GetMapping("/api/vehicle/vin/{vin}")
     VehicleDto findVehicleByVIN(@PathVariable("vin") String vin);

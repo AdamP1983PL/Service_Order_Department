@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <div th:replace="~{fragments/head-content :: head-content}"></div>
+</head>
+<body>
+<nav th:replace="~{fragments/navigation :: nav}"></nav>
+<br>
+<div class="container">
+  <div class="text-center">
+    <h3>Service Order Department User Interface</h3>
+  </div>
+  <hr>
+  <br>
+  <div class="text-center">
+    <a th:href="@{/home/find-all-service-orders}">
+      <h3>Find all Service Orders</h3>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>

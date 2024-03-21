@@ -6,6 +6,7 @@ import com.service_order.exception.ResourceNotFoundException;
 import com.service_order.model.enums.OrderStatus;
 import com.service_order.model.service_order.domain.ServiceOrder;
 import com.service_order.model.service_order.repository.ServiceOrderRepository;
+import com.service_order.service.dto.customer_dto.CustomerDto;
 import com.service_order.service.dto.service_order_dto.ServiceOrderDto;
 import com.service_order.service.dto.vehicle_dto.VehicleDto;
 import com.service_order.service.mapper.ServiceOrderMapper;
@@ -76,14 +77,26 @@ public class ServiceOrderServiceImpl implements ServiceOrderService {
 
     @Override
     public ServiceOrderDto createServiceOrder(ServiceOrderDto serviceOrderDto) {
+
         if (serviceOrderDto != null) {
-            VehicleDto vehicleDto = vehicleApiClient.findVehicleById(serviceOrderDto.getVehicleId());
+            ServiceOrder serviceOrder = serviceOrderMapper.mapToServiceOrder(serviceOrderDto);
+
+            CustomerDto customerById = customerApiClient.findCustomerById(serviceOrderDto.getCustomerId());
+            String customerName = customerById.getCustomerName();
+            serviceOrder.setCustomerName(customerName);
+
+            VehicleDto vehicleById = vehicleApiClient.findVehicleById(serviceOrder.getVehicleId());
+            String vehicleRegistration = vehicleById.getRegistrationNumber();
+            serviceOrder.setVehicleRegistrationNumber(vehicleRegistration);
+
+            ServiceOrder savedServiceOrder = serviceOrderRepository.save(serviceOrder);
+
+            log.info("====>>>> createServiceOrder(" + serviceOrderDto + ") execution.");
+            return serviceOrderMapper.mapToServiceOrderDto(savedServiceOrder);
         }
-        assert serviceOrderDto != null;
-        ServiceOrder mappedServiceOrderEntity = serviceOrderMapper.mapToServiceOrder(serviceOrderDto);
-        ServiceOrder savedServiceOrder = serviceOrderRepository.save(mappedServiceOrderEntity);
-        log.info("====>>>> createServiceOrder(" + serviceOrderDto + ") execution.");
-        return serviceOrderMapper.mapToServiceOrderDto(savedServiceOrder);
+        log.info("====>>>>  createServiceOrder(null) exception.");
+        return null;
+
     }
 
     @Override

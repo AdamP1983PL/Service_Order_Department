@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "CUSTOMER-FEIGN-CLIENT")
+@FeignClient(name = "CUSTOMER-API-FEIGN-CLIENT")
 public interface CustomerApiService {
 
     List<CustomerDto> findAllCustomers();

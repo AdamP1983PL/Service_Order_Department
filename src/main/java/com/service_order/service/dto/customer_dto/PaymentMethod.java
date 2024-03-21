@@ -1,7 +1,5 @@
 package com.service_order.service.dto.customer_dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 
 public enum PaymentMethod {
     CASH("cash"),

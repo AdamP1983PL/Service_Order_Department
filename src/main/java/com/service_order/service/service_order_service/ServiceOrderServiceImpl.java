@@ -1,5 +1,6 @@
 package com.service_order.service.service_order_service;
 
+import com.service_order.client.CustomerApiClient;
 import com.service_order.client.VehicleApiClient;
 import com.service_order.exception.ResourceNotFoundException;
 import com.service_order.model.enums.OrderStatus;
@@ -8,7 +9,6 @@ import com.service_order.model.service_order.repository.ServiceOrderRepository;
 import com.service_order.service.dto.service_order_dto.ServiceOrderDto;
 import com.service_order.service.dto.vehicle_dto.VehicleDto;
 import com.service_order.service.mapper.ServiceOrderMapper;
-import com.service_order.service.vehicle_service.VehicleApiServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -21,17 +21,17 @@ public class ServiceOrderServiceImpl implements ServiceOrderService {
 
     private final ServiceOrderRepository serviceOrderRepository;
     private final ServiceOrderMapper serviceOrderMapper;
-    private final VehicleApiServiceImpl vehicleApiServiceImpl;
     private final VehicleApiClient vehicleApiClient;
+    private final CustomerApiClient customerApiClient;
 
     public ServiceOrderServiceImpl(ServiceOrderRepository serviceOrderRepository,
                                    ServiceOrderMapper serviceOrderMapper,
-                                   VehicleApiServiceImpl vehicleApiServiceImpl,
-                                   VehicleApiClient vehicleApiClient) {
+                                   VehicleApiClient vehicleApiClient,
+                                   CustomerApiClient customerApiClient) {
         this.serviceOrderRepository = serviceOrderRepository;
         this.serviceOrderMapper = serviceOrderMapper;
-        this.vehicleApiServiceImpl = vehicleApiServiceImpl;
         this.vehicleApiClient = vehicleApiClient;
+        this.customerApiClient = customerApiClient;
     }
 
     @Override
@@ -101,16 +101,26 @@ public class ServiceOrderServiceImpl implements ServiceOrderService {
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("Service order", "id: ", Long.toString(id)));
 
-        log.info("====>>>> updateServiceOrder(" + id + ") execution.");
+        log.info("====>>>> updateServiceOrder(id:" + id + ") execution.");
         return serviceOrderMapper.mapToServiceOrderDto(serviceOrder);
     }
 
     @Override
     public ServiceOrderDto mvcUpdateServiceOrder(ServiceOrderDto serviceOrderDto) {
-        ServiceOrder serviceOrder = serviceOrderMapper.mapToServiceOrder(serviceOrderDto);
-        ServiceOrder savedServiceOrder = serviceOrderRepository.save(serviceOrder);
-        log.info("====>>>> mvcUpdateVehicle() execution.");
-        return serviceOrderMapper.mapToServiceOrderDto(savedServiceOrder);
+        ServiceOrder serviceOrder = serviceOrderRepository.findById(serviceOrderDto.getId())
+                .map(order -> {
+                    order.setDateTimeDeadline(serviceOrderDto.getDateTimeDeadline());
+                    order.setCustomerId(serviceOrderDto.getCustomerId());
+                    order.setVehicleId(serviceOrderDto.getVehicleId());
+                    order.setOrderStatus(serviceOrderDto.getOrderStatus());
+                    order.setDescription1(serviceOrderDto.getDescription1());
+                    order.setDescription2(serviceOrderDto.getDescription2());
+                    order.setDescription3(serviceOrderDto.getDescription3());
+                    return serviceOrderRepository.save(order);
+                })
+                .orElseThrow(() -> new ResourceNotFoundException("Service order", "id: ", Long.toString(serviceOrderDto.getId())));
+        log.info("====>>>> mvcUpdateServiceOrder(id:" + serviceOrderDto.getId() + ") execution.");
+        return serviceOrderMapper.mapToServiceOrderDto(serviceOrder);
     }
 
     @Override

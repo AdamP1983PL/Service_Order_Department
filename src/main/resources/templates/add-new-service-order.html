@@ -22,22 +22,33 @@
 <!--                    <p th:if="${#fields.hasErrors('dateTimeDeadline')}" class="text-danger"-->
 <!--                       th:errors="*{dateTimeDeadline}"></p>-->
 <!--                </div>-->
+
+
+<!--                <div class="form-group mb-3">-->
+<!--                    <label for="customerId" class="form-label">Customer Id</label>-->
+<!--                    <input class="form-control" th:field="*{customerId}"-->
+<!--                           type="text" id="customerId" name="customerId" placeholder="Enter Customer Id">-->
+<!--                    <p th:if="${#fields.hasErrors('customerId')}" class="text-danger"-->
+<!--                       th:errors="*{customerId}"></p>-->
+<!--                </div>-->
                 <div class="form-group mb-3">
-                    <label for="customerId" class="form-label">Customer Id</label>
-                    <input class="form-control" th:field="*{customerId}"
-                           type="text" id="customerId" name="customerId" placeholder="Enter Customer Id">
-                    <p th:if="${#fields.hasErrors('customerId')}" class="text-danger"
-                       th:errors="*{customerId}"></p>
+                    <label for="customerId" >Customer Id by name: </label>
+                    <select name="customerId" id="customerId">
+                        <option th:each="cust : ${customers}"
+                                th:value="${cust.id}"
+                                th:text="${cust.customerName}">Customer Name</option>
+                    </select>
                 </div>
+
+<!--                <div class="form-group mb-3">-->
+<!--                    <label for="customerName" class="form-label">Customer Name</label>-->
+<!--                    <input class="form-control" th:field="*{customerName}"-->
+<!--                           type="text" id="customerName" name="customerName" placeholder="Enter Customer Name">-->
+<!--                    <p th:if="${#fields.hasErrors('customerName')}" class="text-danger"-->
+<!--                       th:errors="*{customerName}"></p>-->
+<!--                </div>-->
                 <div class="form-group mb-3">
-                    <label for="customerName" class="form-label">Customer Name</label>
-                    <input class="form-control" th:field="*{customerName}"
-                           type="text" id="customerName" name="customerName" placeholder="Enter Customer Name">
-                    <p th:if="${#fields.hasErrors('customerName')}" class="text-danger"
-                       th:errors="*{customerName}"></p>
-                </div>
-                <div class="form-group mb-3">
-                    <label for="vehicleId" >Registration number: </label>
+                    <label for="vehicleId" >Vehicle Id by registration number: </label>
                     <select name="vehicleId" id="vehicleId">
                         <option th:each="vehicle : ${vehicles}"
                                 th:value="${vehicle.id}"

@@ -1,5 +1,9 @@
 package com.service_order.controller;
 
+import com.service_order.client.CustomerApiClient;
+import com.service_order.client.VehicleApiClient;
+import com.service_order.service.customer_service.CustomerApiServiceImpl;
+import com.service_order.service.dto.customer_dto.CustomerDto;
 import com.service_order.service.dto.service_order_dto.ServiceOrderDto;
 import com.service_order.service.dto.vehicle_dto.VehicleDto;
 import com.service_order.service.service_order_service.ServiceOrderServiceImpl;
@@ -18,11 +22,21 @@ import java.util.List;
 public class ServiceOrderThymeleafController {
 
     private final ServiceOrderServiceImpl serviceOrderServiceImpl;
+    private final VehicleApiClient vehicleApiClient;
     private final VehicleApiServiceImpl vehicleApiServiceImpl;
+    private final CustomerApiServiceImpl customerApiServiceImpl;
+    private final CustomerApiClient customerApiClient;
 
-    public ServiceOrderThymeleafController(ServiceOrderServiceImpl serviceOrderServiceImpl, VehicleApiServiceImpl vehicleApiServiceImpl) {
+    public ServiceOrderThymeleafController(ServiceOrderServiceImpl serviceOrderServiceImpl,
+                                           VehicleApiClient vehicleApiClient,
+                                           VehicleApiServiceImpl vehicleApiServiceImpl,
+                                           CustomerApiServiceImpl customerApiServiceImpl,
+                                           CustomerApiClient customerApiClient) {
         this.serviceOrderServiceImpl = serviceOrderServiceImpl;
+        this.vehicleApiClient = vehicleApiClient;
         this.vehicleApiServiceImpl = vehicleApiServiceImpl;
+        this.customerApiServiceImpl = customerApiServiceImpl;
+        this.customerApiClient = customerApiClient;
     }
 
     @GetMapping("/service-order/find-all")
@@ -37,9 +51,13 @@ public class ServiceOrderThymeleafController {
     public String showAddServiceOrderPage(Model model) {
         ServiceOrderDto serviceOrderDto = new ServiceOrderDto();
         model.addAttribute("serviceOrderDto", serviceOrderDto);
-        List<VehicleDto> vehicleDtoList = vehicleApiServiceImpl.findAllVehicles();
-        model.addAttribute("vehicles", vehicleDtoList);
-//        todo delete "list"
+
+        List<VehicleDto> vehicles = vehicleApiServiceImpl.findAllVehicles();
+        model.addAttribute("vehicles", vehicles);
+
+        List<CustomerDto> customers = customerApiServiceImpl.findAllCustomers();
+        model.addAttribute("customers", customers);
+
         log.info("====>>>> showAddServiceOrderPage() execution");
         return "add-new-service-order";
     }
@@ -73,11 +91,18 @@ public class ServiceOrderThymeleafController {
     public String editServiceOrder(@PathVariable("id") Long id, Model model) {
         ServiceOrderDto serviceOrderDto = serviceOrderServiceImpl.findServiceOrderById(id);
         model.addAttribute("serviceOrderDto", serviceOrderDto);
+
+        List<CustomerDto> customers = customerApiServiceImpl.findAllCustomers();
+        model.addAttribute("customers", customers);
+
+        List<VehicleDto> vehicles = vehicleApiServiceImpl.findAllVehicles();
+        model.addAttribute("vehicles", vehicles);
+
         log.info("====>>>> editServiceOrder(" + id + ") execution.");
         return "edit-service-order";
     }
 
-    @PutMapping("/service-order/update/{id}")
+    @PostMapping("/service-order/update/{id}")
     public String updateServiceOrder(@PathVariable("id") Long id,
                                      @Valid @ModelAttribute("serviceOrderDto") ServiceOrderDto serviceOrderDto,
                                      BindingResult result, Model model) {
@@ -88,7 +113,7 @@ public class ServiceOrderThymeleafController {
         serviceOrderDto.setId(id);
         serviceOrderServiceImpl.mvcUpdateServiceOrder(serviceOrderDto);
         log.info("====>>>> updateServiceOrder(" + id + ") execution.");
-        return "redirect:/find-all-service-orders";
+        return "redirect:/service-order/find-all";
     }
 
     @GetMapping("/service-order/service-order/delete/{id}")
@@ -98,12 +123,20 @@ public class ServiceOrderThymeleafController {
         return "redirect:/find-all-service-orders";
     }
 
-    @GetMapping("/service-order/find-all_vehicles")
-    public String showAllVehicles(Model model) {
+    @GetMapping("/service-order/find-all-vehicles")
+    public String findAllVehicles(Model model) {
         List<VehicleDto> vehicleDtoList = vehicleApiServiceImpl.findAllVehicles();
         model.addAttribute("vehicleDtoList", vehicleDtoList);
         log.info("====>>>> showAllVehicles() execution.");
         return "vehicle/vehicle-list";
+    }
+
+    @GetMapping("/service-order/find-all-customers")
+    public String findAllCustomers(Model model) {
+        List<CustomerDto> customers = customerApiServiceImpl.findAllCustomers();
+        model.addAttribute("customers", customers);
+        log.info("====>>>> findAllCustomers() execution.");
+        return "customer/customers-list";
     }
 
 }

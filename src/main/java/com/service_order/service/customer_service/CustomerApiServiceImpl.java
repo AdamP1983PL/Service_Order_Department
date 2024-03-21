@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CustomerApiServiceImpl implements CustomerApiService {
+public class CustomerApiServiceImpl implements CustomerApiService{
 
     private final CustomerApiClient customerApiClient;
 
@@ -27,7 +27,7 @@ public class CustomerApiServiceImpl implements CustomerApiService {
 
     @Override
     public List<CustomerDto> findCustomersByName(String name) {
-        return null;
+        return customerApiClient.findCustomersByName(name);
     }
 
 }

@@ -39,7 +39,7 @@ public class ServiceOrderController {
     @GetMapping("/status/{status}")
     public ResponseEntity<List<ServiceOrderDto>> findServiceOrdersByStatus(@PathVariable("status") OrderStatus status) {
         List<ServiceOrderDto> serviceOrderDtoList = serviceOrderServiceImpl.findServiceOrdersByStatus(status);
-        log.info("====>>>> findServiceOrdersByStatus(" + status.toString() + ") execution.");
+        log.info("====>>>> findServiceOrdersByStatus(" + status + ") execution.");
         return new ResponseEntity<>(serviceOrderDtoList, HttpStatus.OK);
     }
 

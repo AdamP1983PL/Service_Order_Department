@@ -116,11 +116,11 @@ public class ServiceOrderThymeleafController {
         return "redirect:/service-order/find-all";
     }
 
-    @GetMapping("/service-order/service-order/delete/{id}")
+    @GetMapping("/service-order/delete/{id}")
     public String deleteServiceOrder(@PathVariable("id") Long id) {
         serviceOrderServiceImpl.deleteServiceOrder(id);
         log.info("====>>>> deleteServiceOrder(" + id + ") execution");
-        return "redirect:/find-all-service-orders";
+        return "redirect:/service-order/find-all";
     }
 
     @GetMapping("/service-order/find-all-vehicles")

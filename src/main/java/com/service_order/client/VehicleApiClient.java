@@ -10,16 +10,16 @@ import java.util.List;
 @FeignClient(name = "VEHICLE-DEPARTMENT")
 public interface VehicleApiClient {
 
-    @GetMapping("/vehicles/all-vehicles")
+    @GetMapping("/api/vehicle")
     List<VehicleDto> findAllVehicles();
 
-    @GetMapping("/vehicles/id/{id}")
+    @GetMapping("/api/vehicle/id/{id}")
     VehicleDto findVehicleById(@PathVariable("id") Long id);
 
-    @GetMapping("/vehicles/vin/{vin}")
+    @GetMapping("/api/vehicle/vin/{vin}")
     VehicleDto findVehicleByVIN(@PathVariable("vin") String vin);
 
-    @GetMapping("/vehicles/reg-num/{number}")
+    @GetMapping("/api/vehicle/reg-num/{number}")
     VehicleDto findVehicleByRegistrationNumber(@PathVariable("number") String number);
 
 }
